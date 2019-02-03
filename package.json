@@ -1,0 +1,28 @@
+{
+  "name": "node-lobbies",
+  "version": "1.0.0",
+  "description": "NodeJS application for playing games in user managed lobbies.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run-supervisor": "supervisor -i static -s index.js",
+    "run": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikolajPrzygoda/node-lobbies.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "WebApp"
+  ],
+  "author": "Mikolaj Przygoda",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/MikolajPrzygoda/node-lobbies/issues"
+  },
+  "homepage": "https://github.com/MikolajPrzygoda/node-lobbies#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
