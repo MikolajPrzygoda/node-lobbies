@@ -2,5 +2,22 @@
 <head>
 </head>
 <body>
-    <h1>HELLO WORLD!</h1>
+  <input type="button" onclick="newUser()" value="New User"/>
+  <input type="button" onclick="getUsers()" value="Get Users"/>
 </body>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+
+  function newUser(){
+    socket.emit('newUser', prompt('username'), logResult);
+  }
+
+  function getUsers(){
+    socket.emit('getUsers', logResult);
+  }
+
+  var logResult = (result) => {console.log(result);};
+
+</script>

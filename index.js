@@ -1,8 +1,39 @@
 var express = require('express');
 var app = express();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 
 app.use(express.static('static'));
 
-app.listen(8888, function () {
-  console.log('Server is listening on port 8888.');
+server.listen(8888);
+
+io.on('connection', (socket) => {
+  console.log(`${socket.client.id} connected.`);
+
+  socket.on('newUser', (data, callback) => {
+    console.log(`creating user with '${data}'.`);
+    callback(true);
+  });
+
+  socket.on('getUsers', (callback) => {
+    users = [
+      {
+        name: 'Ala',
+        rank: 1
+      },
+      {
+        name: 'Bob',
+        rank: 2
+      },
+      {
+        name: 'Clay',
+        rank: 3
+      },
+    ];
+    callback(users);
+  });
+
+  socket.on('disconnect', () => {
+    console.log(`${socket.client.id} disconnected.`);
+  });
 });
