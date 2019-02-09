@@ -1,11 +1,13 @@
-var express = require('express');
-var app = express();
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
+const express = require('express');
+const app = express();
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
+
+const PORT = process.env.PORT || 8888
 
 app.use(express.static('static'));
 
-server.listen(8888);
+server.listen(PORT);
 
 io.on('connection', (socket) => {
   console.log(`${socket.client.id} connected.`);
